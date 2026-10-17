@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
+<meta name="theme-color" content="#050d12"/><title>数据中心孪生 · C区</title><link rel="stylesheet" href="style.css"/></head><body>
+<canvas id="c"></canvas>
+<div id="ui">
+<header class="top">
+ <button class="menu" aria-label="菜单"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+ <div class="ttl"><b>数据中心孪生 · C区</b><span>实时监控 · 运行健康</span></div>
+ <div class="tr"><b id="clock">23:45</b><svg viewBox="0 0 24 24" class="sig"><path d="M5 19v-3M10 19v-6M15 19v-9M20 19V5"/></svg></div>
+</header>
+<section class="kpis">
+ <div class="kpi g"><div class="ico"><svg viewBox="0 0 24 24"><path d="M10 4a2 2 0 0 1 4 0v9.5a4 4 0 1 1-4 0z"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/><path d="M12 9v6.5"/></svg></div>
+  <div><span>温度</span><b>22.4°C</b><em>平均温度 · 正常 <i class="ok"></i></em></div></div>
+ <div class="kpi g"><div class="ico"><svg viewBox="0 0 24 24"><rect x="5.5" y="5.5" width="13" height="13" rx="1.5"/><text x="12" y="14.6" text-anchor="middle" font-size="6.4" font-weight="700" fill="currentColor" stroke="none">PE</text><path d="M9 2.5v3M12 2.5v3M15 2.5v3M9 18.5v3M12 18.5v3M15 18.5v3M2.5 9h3M2.5 12h3M2.5 15h3M18.5 9h3M18.5 12h3M18.5 15h3"/></svg></div>
+  <div><span>PUE</span><b>1.28</b><em>电源使用效率 · 优秀</em></div></div>
+ <div class="kpi g"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14 2L5 13.5h6.5L10 22l9-12h-6.5z" fill="currentColor"/></svg></div>
+  <div><span>IT负载</span><b>4.2MW</b><em>当前IT负载 · 稳定</em></div></div>
+</section>
+<section class="status g">
+ <h4>系统状态</h4>
+ <div class="chk"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><path d="M15 24.5l6 6 12-13"/></svg></div>
+ <b>一切正常</b><span>系统运行稳定</span><time id="stT">23:45:12</time>
+</section>
+<section class="filter g">
+ <h4>系统筛选</h4>
+ <div class="fl">
+  <button data-f="all" class="on"><svg viewBox="0 0 24 24"><path d="M4 21V9h5v12M9 21V4h6v17M15 21v-9h5v9M2.5 21h19M11 8h2M11 12h2M11 16h2"/></svg>总览</button>
+  <button data-f="cool"><svg viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M20.7 7L3.3 17M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></svg>制冷系统</button>
+  <button data-f="power"><svg viewBox="0 0 24 24"><path d="M14 2L5 13.5h6.5L10 22l9-12h-6.5z" fill="currentColor"/></svg>电力系统</button>
+  <button data-f="it"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="5" rx="1"/><rect x="4" y="9.5" width="16" height="5" rx="1"/><rect x="4" y="16" width="16" height="5" rx="1"/><path d="M7 5.5h3M7 12h3M7 18.5h3"/></svg>IT设备</button>
+  <button data-f="sec"><svg viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>网络安全</button>
+  <button data-f="energy"><svg viewBox="0 0 24 24"><path d="M4 21V13h3v8M10.5 21V8h3v13M17 21V4h3v17"/></svg>能耗管理</button>
+ </div>
+</section>
+<section class="charts g">
+ <div class="ch"><span>今日能耗</span><b>10.56<small> MWh</small></b><em>同比昨日 ↓ 3.2%</em><svg id="c1" viewBox="0 0 100 32"></svg></div>
+ <div class="ch"><span>水利用效率</span><b>1.65<small> L/kWh</small></b><em>同比昨日 ↓ 1.1%</em><svg id="c2" viewBox="0 0 100 32"></svg></div>
+ <div class="ch"><span>碳排放</span><b>4.82<small> tCO₂e</small></b><em>同比昨日 ↓ 2.7%</em><svg id="c3" viewBox="0 0 100 32"></svg></div>
+ <i class="demo">示例数据</i>
+</section>
+<section class="panel g" id="p-alarm" hidden><h4>告警 <i class="demo2">示例数据</i></h4>
+ <div class="al w"><b>B栋 冷通道温度偏高</b><span>24.6°C · 阈值 24°C · 3 分钟前</span></div>
+ <div class="al"><b>冷却塔 #2 风机变频调整</b><span>42Hz · 12 分钟前</span></div>
+ <div class="al o"><b>UPS-A 巡检完成</b><span>电池健康 98% · 1 小时前</span></div></section>
+<section class="panel g" id="p-report" hidden><h4>报告 <i class="demo2">示例数据</i></h4>
+ <div class="al"><b>2026 年 10 月 运行周报</b><span>PUE 均值 1.29 · 可用性 99.995%</span></div>
+ <div class="al"><b>能耗月报 · 9 月</b><span>总能耗 318.4 MWh</span></div></section>
+<section class="panel g" id="p-set" hidden><h4>设置</h4>
+ <div class="al"><b>显示质量</b><span>高（像素比 ≤ 2）</span></div><div class="al"><b>数据刷新</b><span>每 5 秒</span></div></section>
+<footer class="tabs">
+ <button data-t="vis" class="on"><svg viewBox="0 0 24 24"><path d="M12 2.5l8.5 4.7v9.6L12 21.5l-8.5-4.7V7.2z"/><path d="M3.5 7.2L12 12l8.5-4.8M12 12v9.5"/></svg>可视化</button>
+ <button data-t="alarm"><svg viewBox="0 0 24 24"><path d="M6 17v-6a6 6 0 0 1 12 0v6l1.5 1.5h-15z"/><path d="M10 21h4"/></svg>告警<i class="badge"></i></button>
+ <button data-t="report"><svg viewBox="0 0 24 24"><path d="M6 2.5h8.5l4 4v15H6z"/><path d="M14 2.5v4.5h4.5M9 12h6M9 15.5h6M9 19h4"/></svg>报告</button>
+ <button data-t="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5l2 2.3 3-.6.8 3 2.7 1.4-1.2 2.9 1.2 2.9-2.7 1.4-.8 3-3-.6-2 2.3-2-2.3-3 .6-.8-3L2.5 15.4l1.2-2.9-1.2-2.9 2.7-1.4.8-3 3 .6z"/></svg>设置</button>
+</footer>
+<div class="home"></div>
+</div>
+<script type="module" src="app.js"></script></body></html>
